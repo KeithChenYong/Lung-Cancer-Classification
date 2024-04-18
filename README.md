@@ -1,4 +1,4 @@
-![image](https://github.com/KeithChenYong/Lung-Cancer-Classification/assets/133010489/e02820c5-9f0c-4a4a-a234-f955dcbd00fb)# Lung cancer classification
+# Lung cancer classification
 This project by Keith Chen Yong, aimed at his first E2E personal project for Lung Cancer classification. <br>
 
 ## Project Title
