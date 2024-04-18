@@ -1,4 +1,4 @@
-# Lung cancer classification
+![image](https://github.com/KeithChenYong/Lung-Cancer-Classification/assets/133010489/e02820c5-9f0c-4a4a-a234-f955dcbd00fb)# Lung cancer classification
 This project by Keith Chen Yong, aimed at his first E2E personal project for Lung Cancer classification. <br>
 
 ## Project Title
@@ -11,24 +11,18 @@ This initiative aims to predict the severity of lung cancer diagnosis in individ
 All the necessary dependencies are specified in requirements.txt.
 
 ## Usage
-Upon pulling or manually triggering the workflow in GitHub, the necessary installations from requirements.txt and the execution of the run.sh bash script will be completed. This will be followed by the execution of the main.py script. This Python script sequentially triggers various Python files responsible for tasks such as data ingestion (from a .db file named cancer_patient_data_sets within a folder titled data), data preprocessing, model building, k-fold cross-validation, and lastly, evaluation of the algorithms. Users will be able to see the k-fold cross-validation results, offering a comprehensive view of the dataset's behavior under different models and various classification performance metrics for each algorithm. <br>
-![image](https://github.com/KeithChenYong/aiap-chen-yong-427J/assets/133010489/c5b911b6-aa4b-409e-a6eb-ce90b37a0fde)
+Upon pulling or manually triggering the workflow in GitHub, the necessary installations from requirements.txt and the execution of the run.sh bash script will be completed. This will be followed by the execution of the main.py script. This Python script sequentially triggers various Python files responsible for tasks such as data ingestion (from a .db file named cancer_patient_data_sets within a folder titled data), data preprocessing, model building, k-fold cross-validation, and lastly, evaluation of the algorithms. Users will be able to see the k-fold cross-validation results, offering a comprehensive view of the dataset's behavior under different models and various classification performance metrics for each algorithm. <br><br>
+![image](https://github.com/KeithChenYong/Lung-Cancer-Classification/assets/133010489/da1c3ed7-1397-4021-b2b3-572090d4b2f9)
+
 
 User will be able to see the k-fold cross-validation results, offering a holistic view of the dataset's behavior under different models and various classification Performance metrics for each algorithm.<br>
-**Note** Given the project's focus on the early detection of lung cancer, the <b>recall</b> metric (also known as sensitivity) should be prioritized to minimize the risk of overlooking actual cases of lung cancer. This prioritization underscores the project's commitment to ensuring the highest possible accuracy in identifying true positives.
-| Performance Metric (Classification)          | Definition |
-|-----------------|------------|
-| Confusion Matrix| - **True Positives (TP):** Correctly predicted positive.<br>- **True Negatives (TN):** Correctly predicted negative.<br>- **False Positives (FP):** Incorrectly predicted positive.<br>- **False Negatives (FN):** Incorrectly predicted negative. |
-| Accuracy        | - The ratio of correctly predicted to the total observations.<br>- Formula: `(TP + TN) / (TP + TN + FP + FN)`. |
-| Precision       | - The ratio of correctly predicted positive to the total predicted positive observations.<br>- Also known as Positive Predictive Value.<br>- Formula: `TP / (TP + FP)`. |
-| Recall **Important**          | - The ratio of correctly predicted positive to all observations in actual class - yes.<br>- AKA Sensitivity or True Positive Rate.<br>- Formula: `TP / (TP + FN)`. |
-| Specificity     | - The ratio of correctly predicted negative to all observations in actual class - no.<br>- AKA True Negative Rate.<br>- Formula: `TN / (TN + FP)`. |
+**Note** Given the project's focus on the early stage detection of lung cancer, the <b>recall</b> metric (also known as sensitivity) should be prioritized to minimize the risk of overlooking actual stage of lung cancer. This prioritization underscores the project's commitment to ensuring the highest possible accuracy in identifying true positives.
 
 ## Configuration
 Users have the flexibility to modify the following
-1. Modify the k value in crossval.py for cross-validation
-2. Fine-tuning hyperparameters in model.py to improve model performance or tailor it to different datasets
-3. Introduce new algorithms in main.py for exploring additional analytical approaches. *Note: Additional of new algorithms will require modify of model.py*
+1. Modify the k value in config.ini for cross-validation
+2. Fine-tuning hyperparameters in config.ini to improve model performance or tailor it to different datasets
+3. Introduce new algorithms in config.ini for exploring additional analytical approaches. *Note: Additional of new algorithms will require modify of model.py. Please contact author for further guidance, contact information listed below*
 
 | ML Algorithm            | Justification |
 |-------------------------|---------------|
@@ -37,13 +31,13 @@ Users have the flexibility to modify the following
 | Support Vector Classification | - Effective in high-dimensional spaces.<br>- Kernel trick allows for non-linear classification.<br>- Soft margin approach enhances generalization. |
 
 ## Contributing
-Contributions are welcome! Please submit bug reports or feature requests via the [GitHub issue tracker](https://github.com/KeithChenYong/aiap-chen-yong-427J/issues).
+Contributions are welcome! Please submit bug reports or feature requests via the [GitHub issue tracker](https://github.com/KeithChenYong/Lung-Cancer-Classification/issues).
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE.txt) file for details. 
 
 ## Credits
-**AISG** as the source of data provision
+**Kaggle - The Devastator (Author)** as the [source](https://www.kaggle.com/datasets/thedevastator/cancer-patients-and-air-pollution-a-new-link/data) of data provision. 
 
 ## Contact
 Author Name:   Chen Yong
@@ -75,37 +69,17 @@ The folder contains a mix of directories and files designed to organize the proj
 8. run.sh: This is a shell script file that contains commands to run the project. 
 
 ## EDA Overview
-Summary of the EDA indicates four major input features for the models.
-1. A large decrease in weight poses a higher risk of lung cancer
-2. The presence of genetic markers poses a higher risk of lung cancer
-3. Being female poses a higher risk of lung cancer
-4. Higher exposure to air pollution poses a higher risk of lung cancer
+Summary of the EDA indicates that mutiple features exhibits high corelation between features. At first glance, this dataset might appear suitable. However, its cleaned and pre-processed nature restricts our capability to conduct feature engineering.<br>
+![image](https://github.com/KeithChenYong/Lung-Cancer-Classification/assets/133010489/4760342c-01c7-42b7-925a-35f6ca4e164d)
 
-Feature engineering
-1. The 'smoke duration' was calculated by the difference between the 'Start Smoking' and 'Stop Smoking' years, with the *assumption that the dataset remains valid as patients who are still smoking are calculated using the current year.*
-2. The 'weight change' was calculated by the difference between the 'Last weight' and 'Current weight' to observe weight changes. It was found in the Exploratory Data Analysis (EDA) that weight change has a higher correlation with the given features than others.
-   
-| Attribute                | Description                                                                                   |
-|--------------------------|-----------------------------------------------------------------------------------------------|
-| ID                       | Removed as found irrelevant.                                                                                    |
-| Age                      | Outliers addressed. Negative ages were converted to absolute values. Removed as found irrelevant.                                                                           |
-| Gender                   | Removed 1 'NaN' row, converted to nominal variables, and Z-scaled for the model.                                                                         |
-| COPD History             | Used 'Taken Bronchodilators' to fill missing values (refer to EDA for justification). Removed as found irrelevant.                  |
-| Genetic Markers          | Converted to a nominal variable and Z-scaled for the model.                    |
-| Air Pollution Exposure   | Removed 3 'NaN' rows, converted to an ordinal variable, and Z-scaled for the model.                                  |
-| Last Weight              | Data used to create a new feature called 'weight change'. Removed afterwards.                                                    |
-| Current Weight           | Data used to create a new feature called 'weight change'. Removed afterwards.                                                 |
-| Start Smoking            | Data used to create a new feature called 'smoke duration'. Removed afterwards.                                                          |
-| Stop Smoking             | Data used to create a new feature called 'smoke duration'. Removed afterwards.                                                           |
-| Taken Bronchodilators    | Utilized to fill in 'COPD History'. Removed afterwards due to strong correlation with 'COPD History'.                       |
-| Frequency of Tiredness   | Converted to an ordinal variable. Removed as found irrelevant.                                               |
-| Dominant Hand            | Removed as found irrelevant.                                                                  |
-| Weight Change            | New feature from the weight difference between 'Last Weight' and 'Current Weight', and Z-scaled for the model. |
-| Smoke Span               | New feature from the time difference between 'Start Smoking' and 'Stop Smoking'. Removed as found irrelevant. |
-| Lung Cancer Occurrence   | Target. |
+"Principal Component Analysis (PCA) was utilized to reduce dimensionality and decorrelate features for the models. The Kaiser Criterion was applied, selecting 6 components. <br>
+![image](https://github.com/KeithChenYong/Lung-Cancer-Classification/assets/133010489/47237837-c347-4a23-ab5e-d3104f7829f1)
 
-<u>Heatmap analysis before introducing to the algorithms</u>
-Four weak features were identified and subsequently dropped to avoid introducing irrelevant features to the model<br>
-![image](https://github.com/KeithChenYong/aiap-chen-yong-427J/assets/133010489/a65a0729-b4d8-4d94-b62c-3edd44fd98a7)
 
-Refer to [eda.ipynb](https://github.com/KeithChenYong/aiap-chen-yong-427J/tree/main) for detailed analysis
+<u>Heatmap analysis before introducing to the PCA</u>
+![image](https://github.com/KeithChenYong/Lung-Cancer-Classification/assets/133010489/742fd958-9bc9-4ab6-ba78-cde8b93bf7fa)
+
+PCA serves to reduce overfitting and computational complexity by eliminating correlated features and reducing dimensionality. While this aids in reducing training time and computational costs, it introduces bias and leads to less interpretable models, often resulting in some loss of information.
+
+
+Refer to [eda.ipynb](https://github.com/KeithChenYong/Lung-Cancer-Classification) for detailed analysis
