@@ -1,5 +1,5 @@
 # Lung cancer classification
-This project by Keith Chen Yong, aimed at his first E2E personal project for Lung Cancer classification. <br>
+This project, led by Keith Chen Yong, aims to develop an end-to-end (E2E) solution for lung cancer classification.<br>
 
 ## Project Title
 Prediction of Lung Cancer Using Classification Algorithms
@@ -69,17 +69,18 @@ The folder contains a mix of directories and files designed to organize the proj
 8. run.sh: This is a shell script file that contains commands to run the project. 
 
 ## EDA Overview
-Summary of the EDA indicates that mutiple features exhibits high corelation between features. At first glance, this dataset might appear suitable. However, its cleaned and pre-processed nature restricts our capability to conduct feature engineering.<br>
-![image](https://github.com/KeithChenYong/Lung-Cancer-Classification/assets/133010489/4760342c-01c7-42b7-925a-35f6ca4e164d)
-
-"Principal Component Analysis (PCA) was utilized to reduce dimensionality and decorrelate features for the models. The Kaiser Criterion was applied, selecting 6 components. <br>
-![image](https://github.com/KeithChenYong/Lung-Cancer-Classification/assets/133010489/47237837-c347-4a23-ab5e-d3104f7829f1)
+Summary of the EDA indicates that mutiple features exhibits high corelation between features as shown by the heatmap below using 'spearman' method. <br>
+![image](https://github.com/KeithChenYong/Lung-Cancer-Classification/assets/133010489/cc8abe25-f969-43ab-bc34-9679ef4ccee6)
 
 
-<u>Heatmap analysis before introducing to the PCA</u>
-![image](https://github.com/KeithChenYong/Lung-Cancer-Classification/assets/133010489/742fd958-9bc9-4ab6-ba78-cde8b93bf7fa)
+At first glance, this dataset might appear suitable. However, its cleaned and pre-processed nature restricts our capability to conduct feature engineering. A violin plot shows us that all features does indeed provide some insights to the prediction of cancer severity. <br>
+![image](https://github.com/KeithChenYong/Lung-Cancer-Classification/assets/133010489/6b8daa9e-4f09-4529-a0b3-abf0a3936023)
 
-PCA serves to reduce overfitting and computational complexity by eliminating correlated features and reducing dimensionality. While this aids in reducing training time and computational costs, it introduces bias and leads to less interpretable models, often resulting in some loss of information.
+
+In order to use all feature that are correlated, Principal Component Analysis (PCA) was utilized to reduce dimensionality and decorrelate features for the models. The Kaiser Criterion was applied, selecting 6 components. PCA serves to reduce overfitting and computational complexity by eliminating correlated features and reducing dimensionality. While this aids in reducing training time and computational costs, it introduces bias and leads to less interpretable models, often resulting in some loss of information.<br>
+![image](https://github.com/KeithChenYong/Lung-Cancer-Classification/assets/133010489/ea01c9db-27a6-4c7b-941e-ec493e8f9722)
+<br>
+![image](https://github.com/KeithChenYong/Lung-Cancer-Classification/assets/133010489/e3544687-ea4c-4fae-bdc3-647728a29f97)
 
 
 Refer to [eda.ipynb](https://github.com/KeithChenYong/Lung-Cancer-Classification) for detailed analysis
